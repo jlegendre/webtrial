@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+
+
+{% extends "polls/base.html" %}
+
+{% block title %}Accueil{%endblock %}
+{% block bodyId %}welcomePage{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
+<section id="messageList">
+	<form action="welcome" method="GET" class="inlineForm">
+		<label for="newMessageInput">Publier un message :</label>
+		<input type="text" name="newMessage" id="newMessageInput" />
+		<input type="submit" value="Publier" />
+	</form>
+	<ul>
+		{% for message in friendMessages %}
+		<li>
+			<p>
+				<a href="../showProfile?userToShow={{ message.auteur.id }}">{{ message.auteur.prenom }}
+				{{ message.auteur.nom }}</a> dit :
+			</p>
+			<p>{{ message.contenu }}</p>
+		</li>
+		{% endfor %}
+	</ul>
+</section>
+<section id="friendList">
+	<p class="title">Mes amis</p>
+	<p><a href="../addFriend" class="buttonLink">Ajouter</a></p>
+	<ul>
+		{% for ami in logged_user.amis.all %}
+			<li><a href="../showProfile?userToShow={{ ami.id }}">{{ ami.prenom }} {{ ami.nom }}</a></li>
+		{% endfor %}
+	</ul>
+</section>
+{% endblock %}
+
+{% block headerContent %}
+<br>
+<p id="name">{{ logged_user.prenom }} {{ logged_user.nom }}</p>
+<p id="function">
+	{% if logged_user.type_de_personne == 'student' %}
+	Étudiant en 
+		{% if logged_user.annee == 1 %}
+			{{ logged_user.annee }}ère
+		{% else %}
+			{{ logged_user.annee }}ème
+		{% endif %}
+		{{ logged_user.Cursus.intitule }}
+	{% else %}
+	{{ logged_user.fonction.intitule|capfirst }}
+	dans la faculté {{ logged_user.faculte }}
+	{% endif %}
+</p>
+
+<p id="profileLinks">
+	<a href="../showProfile?userToShow={{ logged_user.id }}" class="buttonLink">Voir mon profil</a>
+	<a href="../modifyProfile" class="buttonLink">Modifier mon profil</a>
+	<a href="/login" class="buttonLink">Retour à la page d'authentification</a>
+	<a href="/upload" class="buttonLink">Uploader une image</a>
+	<a href="https://www.facebook.com/sharer/sharer.php?u=www.facebook.com/">
+Share on Facebook
+</a>
+</p>
+
+{% endblock %}
+
+{% block bodyContent %}
+
+{% endblock %}

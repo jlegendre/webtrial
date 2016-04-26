@@ -1,0 +1,265 @@
+{% load staticfiles %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{% static 'img/logoaaa.png' %}">
+
+
+    <title>Access {{ numPages }}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../static/css/bootstrap.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../../static/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../../static/css/jumbotron.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../static/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header bottom">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button><h6>
+          <a class="navbar-brand" href="../../"><img src="{% static 'img/logoaaa.png' %}" width=" 80px" class="img-responsive" /></a>
+          <a class="navbar-brand" href="../../showProfile/">Mon profil</a>
+          <a class="navbar-brand" href="../../modifyProfile/">Modifier mon profil</a> </h6>
+        </div>
+        
+        <div id="navbar" class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right">
+          <a class="navbar-brand" href="../email/">Nous contactez</a>
+          <a class="navbar-brand" href="../../login/">Retour à l'authentification</a>  
+          </form>
+          </div>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+
+      <center><div class="container">
+        <h1>Webtrial site !</h1>
+      </div>
+    </div>
+
+<div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-6 col-md-push-3">
+
+<h1>{{ numPages }}</h1>
+<center><h3> Formulaire :<br>{{ numPages }} pour l'utilisateur : <center>{{ logged_user|upper }}.</center> </h3></center>
+
+
+
+  <form method="POST" action="">
+    {{ formset.management_form }} {% csrf_token %}
+    <table>
+
+      <!<br>{{ formset.as_p }}<br>
+{% if not questions %}
+<hr> 
+<center>Il n'y a pas de questions pour cette visite !</center> 
+
+<a href="../../baseVisite/" class="btn btn-success">Retour</a></center>
+{% else %}
+<center><input type="submit" value="Submit" class="btn btn-success" />
+    <a href="../../baseVisite/" class="btn btn-success">Retour</a></center>
+  </form>
+  {% endif %}
+     <!--  {% for question in questions %}<hr>
+   
+    <label for="question"><left>{{ question }} </left></label>  
+    <input type="hidden" id="id_form-{{ forloop.counter0 }}-question" name="form-{{ forloop.counter0 }}-question" value="{{ question.id }}"/>
+    
+  </p>
+
+
+
+{% for reply in question.reply_set.all %}
+{% if reply.user.id == logged_user.id %}
+<p>
+  <label for="answer"></label>
+  <input type="text" id="id_form-{{ forloop.parentloop.counter0 }}-answer" name="form-{{ forloop.parentloop.counter0 }}-answer" value="{{ reply.answer }}"/>
+  <input type="hidden" id="id_form-{{ forloop.parentloop.counter0 }}-id" name="form-{{ forloop.parentloop.counter0 }}-id" value="{{ reply.id }}"/>
+</p>
+{% elif reply.user.id != logged_user.id and not reply.logged_user %}
+<p>
+  <label for="answer"></label>
+  <input type="text" id="id_form-{{ forloop.parentloop.counter0 }}-answer" name="form-{{ forloop.parentloop.counter0 }}-answer" placeholder="answer here"/>
+  <input type="hidden" id="id_form-{{ forloop.parentloop.counter0 }}-id" name="form-{{ forloop.parentloop.counter0 }}-id" />
+</p>
+{% endif %}
+{% empty %}
+<p>
+  <label for="answer"></label>
+  <input type="text" id="id_form-{{ forloop.counter0 }}-answer" name="form-{{ forloop.counter0 }}-answer" placeholder="answer here"/>
+  <input type="hidden" id="id_form-{{ forloop.counter0 }}-id" name="form-{{ forloop.counter0 }}-id"/>
+</p>
+{% endfor %}{% endfor %}
+ </table><br> -->
+   <!--  <center><input type="submit" value="Submit" class="btn btn-success" />
+    <a href="../../baseVisite/" class="btn btn-success">Retour</a></center>
+  </form> -->
+
+ <hr> 
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Liste de vos réponses :</h3>
+  </div>
+  <div class="panel-body">
+
+  {% for question in questions %}  
+  {% for reply in question.reply_set.all %}
+  {% if reply.user.id == logged_user.id %}
+<hr>
+    {{ logged_user }} {{ reply.user }} --> {{ question }} : {{ reply.answer }}
+
+    {% endif %}
+  {% endfor %}
+  {% endfor %}    
+  
+  </div>
+</div>
+<!-- __________________________________________________________ 
+      
+  {% if reply.question_set.all %}
+    <p>
+    <label for="answer">Réponse :</label>
+    <input type="text" id="id_form-{{ forloop.parentloop.counter0 }}-answer" name="form-{{ forloop.parentloop.counter0 }}-answer" value="{{ reply.answer }}"/>
+    <input type="hidden" id="id_form-{{ forloop.parentloop.counter0 }}-id" name="form-{{ forloop.parentloop.counter0 }}-id" value="{{ reply.id }}"/>
+    </p>
+  {% else %}
+    <p>
+    <label for="answer">Réponse :</label>
+    <input type="text" id="id_form-{{ forloop.counter0 }}-answer" name="form-{{ forloop.counter0 }}-answer" placeholder="answer here"/>
+    <input type="hidden" id="id_form-{{ forloop.counter0 }}-id" name="form-{{ forloop.counter0 }}-id" value="{{ reply.id }}"/>
+    </p>
+  {% endif %} 
+
+
+ __________________________________________________________ -->
+  <!--   {% for question in questions %}<hr>
+   
+    <label for="question">{{ question }} [{{ question.id }}]</label>  
+    <input type="hidden" id="id_form-{{ question.id }}-question" name="form-{{ question.id }}-question" value="{{ question }}"/>
+
+  </p>
+  <p>
+    <label for="answer">Réponse :</label>
+    <input type="text" id="id_form-{{ question.id }}-answer" name="form-{{ question.id }}-answer"/>
+  </p>  
+ 
+{% endfor %}<hr>
+
+  <p>
+    <label for="creationDate">Date de création :</label>
+    <input type="text" id="id_creationDate" name="creationDate" />
+  </p> 
+  <p>
+    <label for="user"> User : {{ logged_user }}</label>
+    <input type="hidden" id="id_user" name="user" value="{{ logged_user }}"/>
+
+    <center><input type="submit" value="Submit" class="btn btn-success" />
+    <a href="../../baseVisite/" class="btn btn-success">Retour</a></center>
+  </form>
+ -->
+
+
+
+
+<!-- <form action="" method="POST" >
+    {% csrf_token %} -->
+  <!--   {{ form.as_p }} -->
+  <!-- <p>
+    {% for question in questions %}<hr>
+    <label for="question">{{ question }} [{{ question.id }}]</label>
+    <input type="hidden" id="id_question{{ question.id }}" name="question" value="{{ question.id }}"/>
+  </p>
+  <p>
+    <label for="answer">Réponse :</label>
+    <input type="text" id="id_answer{{ question.id }}" name="answer"/>
+  </p>  
+    {% endfor %}<hr>
+  <p>
+    <label for="creationDate">Date de création :</label>
+    <input type="text" id="id_creationDate" name="creationDate" />
+  </p> 
+  <p>
+    <label for="user"> User : {{ logged_user }}</label>
+    <input type="hidden" id="id_user" name="user" /> <select name="{{ logged_user }}" size="1">
+      <option id="{{ logged_user.id }}">{{ logged_user }}</option>
+    </select> -->
+<!--   </p>
+  <p>
+  <br><br><br>
+    <center><input type="submit" class="btn btn-success" value="Submit" /></center>
+  </p>
+</form> --> 
+
+
+<!-- {% for question in questions %}
+<input name="user" value="{{ logged_user.id }}" type="hidden">
+      <input name="{{ question.id }}" value="{{ question.id }}" type="hidden">
+      <label for="{{ question.id }}">{{ question }}</label>
+      <input id="{{ question.id }}" type="text" name="{{ question.id }}" value=""><hr>
+    {% endfor %}
+<label for="{{ field.user }}">User :</label>
+
+            <select name="{{ logged_user }}" size="1">
+              <option id="{{ logged_user.id }}">{{ logged_user }}</option>
+           
+            </select>
+    
+    
+    <center><p><input type="submit" class="btn btn-success" value="Submit" /></p></center>
+</form>
+ -->
+
+ 
+
+
+
+</div>
+      </div>
+
+      <footer>
+      <br><br><br>
+
+        <p>&copy; 2016 Legendre, Inc.</p>
+      </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../../static/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../static/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

@@ -1,0 +1,299 @@
+h1, h2, h3, h4, h5, h6 {
+    /*  font-family: Oswald, Helvetica, Arial, sans-serif;*/
+    
+    margin: 10px 0;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    font-weight: 300;
+    color: #505458;
+}
+
+html {
+    font-size: 100%;
+    height: 100%;
+    background-color: #f1f2f7;
+}
+
+header {
+
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100px;
+	width: 100%;
+	background: white url("../img/logoaaa.png") no-repeat left;
+	border-bottom: 1px solid #133783;
+	color: #000333;
+}
+
+body{
+	font-size: 14px;
+	margin: 0; 
+	padding: 0;
+	font-family: "Lucida Grande", Tahoma, Verdana, Arial, sans-serif;
+	color: #000333;
+	
+
+}
+
+form p.error{
+	margin-left: 160px;
+	color: red;
+}
+
+body#loginPage section#content {
+
+	position: absolute;
+	top: 150px;
+	left: 50%;
+	width: 500px;
+	margin: 0 0 0 -250px;
+	padding: 0;
+}
+
+form label {
+	display: block;
+	width: 150px;
+	float: left;
+	text-align: right;
+	padding: 5px 10px 0 0;
+}
+
+form input[type="email"], form input[type="text"],
+form input[type="password"]{
+	display: block;
+	width: 250px;
+	padding: 2px 15px 3px 15px;
+}
+
+form input[type="submit"]{
+	margin:80px 20px 0 160px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #d9dfea #0e1f5b #0e1f5b #d9dfea;
+	background-color: #3b5998;
+	color: #FFFFFF;
+	padding: 2px 15px 3px 15px;
+	text-align: center;
+}
+
+
+a{
+	color: #3b5998;
+}
+
+body#loginPage section#content {
+	position: absolute;
+	top: 150px;
+	left: 50%;
+	width: 500px;
+	margin: 0 0 0 -250px;
+	padding: 0;
+}
+
+body section#content {
+	position: absolute;
+	top: 110px;
+	left: 50%;
+	width: 500px;
+	margin: 0 0 0 -250px;
+	padding: 0;
+}
+
+body#loginPage section#content {
+	top: 150px;
+}
+
+h1 {
+	text-align: center;
+	font-style: 22px;
+	margin: 0px 60px 30px 60px;
+	padding: 5px 0 5px 0;
+	color: #3b5998;
+	border-bottom: 1px solid #3b5998;
+}
+
+p{
+	text-align: center;
+	color: #000333;
+}
+
+body#welcomePage header {
+	background: #3b5998 url('"../img/logoaaa.png"') no-repeat 20 px 25px;
+	color: #FFFFFF;
+}
+
+body#welcomePage header p#name {
+	font-size: 22px;
+	margin: 0 0 0 70px;
+}
+
+body#welcomePage header p#function {
+	margin: 0 0 0 70px;
+}
+
+body#welcomePage header p#profileLinks {
+	position: absolute;
+	right: 40px;
+	top: 25px;
+}
+
+a.buttonLink {
+	border-style: solid;
+	border-width: 1px;
+	border-color: #d9dfea #0e1f5b #0e1f5b #d9dfea;
+	background-color: #3b5998;
+	color: #FFFFFF;
+	padding: 4px 15px 4px 15px;
+	text-align: center;
+	text-decoration: none;
+	
+	
+}
+
+body#welcomePage section#content {
+	width: 800px;
+	margin: 5px 0 0 -400px;
+}
+
+body#welcomePage section#messageList {
+	position: absolute;
+	width: 600px;
+	/*background-color: red;*/
+	background-color: #DCE0ED;
+}
+
+form.inlineForm label {
+	display: inline;
+	float: none;
+	padding: 0px;
+}
+
+form.inlineForm input[type="text"] {
+	display: inline-block;
+	width: 150px;
+}
+
+form.inlineForm input[type="submit"] {
+	margin: 0;
+}
+
+section#messageList ul {
+	margin: 20px 0 0 0;
+	list-style: none;
+	padding: 0;
+}
+
+section#messageList ul li {
+	margin-bottom: 10px;
+}
+
+section#messageList ul li p {
+	margin: 8px 0 0 0;
+}
+
+body#welcomePage section#friendList {
+	position: absolute;
+	width: 180px;
+	right: 0px;
+	padding: 10px;
+	background-color: #DCE0ED;
+}
+
+section#friendList p.title {
+	font-size: 22px;
+	color: #3b5998;
+	border-bottom: 1px solid #3b5998;
+	margin: 0 0 20px 0;
+}
+
+section#friendList ul {
+	margin: 20px 0 0 0;
+	list-style: none;
+	padding: 0;
+}
+
+section#friendList ul li {
+	margin: 0 0 5px 0;
+}
+
+dl.fieldList dt {
+	display: block;
+	width: 150px;
+	float: left;
+	text-align: right;
+	padding: 0 10px 0 0;
+	font-weight: bold;
+}
+
+dl.fieldList dd {
+	display: block;
+	width: 450px;
+	padding: 0px;
+	margin: 0 0 10px 0;
+}
+
+p#showProfileNavigationsButtons {
+	margin: 20px 0 0 260px;
+}
+
+body#userProfilePage section#studentList {
+	background-color: #DCE0ED;
+	
+}
+
+body#userProfilePage section#employeeList {
+	background-color: #DCE0ED;
+	display: block;
+}
+
+body#userProfilePage input[type="submit"] {
+	margin: 0;
+}
+
+#Global #gauche {
+    width: 700px;
+	margin: 0 0 0 -500px;
+	padding: 35px;
+}
+#Global #droite {
+    margin-left:60%;   
+    position: absolute;
+	top: 110px;
+	left: 100%;
+	width: 700px;
+	margin: 0 0 0 -150px;
+	padding: 0px;
+}
+
+fieldset {
+ 	border-bottom:4px solid #4169E1;
+ 	border-right:4px solid #4169E1;
+ 	border-top:4px solid #4169E1;
+ 	border-left:4px solid #4169E1;
+ 	border-radius: 10px;
+ 	padding: 10px;
+ }
+
+ input[type=submit]:hover, input[type=reset]:hover {
+ background-color: #000080;
+ }
+
+ #showProfilePage ul {
+ 	background-color: #DCE0ED;
+ }
+
+ #modifyProfilePage ul {
+ 	background-color: #DCE0ED;
+ }
+
+.images_petit {
+  padding: 10px 10px 10px 10px;
+  border: 4px solid #4169E1;
+  margin: 20px;
+  margin-right: 60px;
+  background: #eeeeee;
+  padding: 20px;
+  font-size: small;
+  font-family: "Tahoma", Arial, sans-serif;
+  text-align: left;
+}

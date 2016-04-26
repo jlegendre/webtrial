@@ -1,0 +1,35 @@
+<!-- <center><form action="/name/" method="POST" enctype="multipart/form-data" >
+    {% csrf_token %}
+    <!-- {{ form.as_p }} 
+  <p>
+    <label for="question">Question : {{ question }} [{{ question.id }}]</label>
+    <input type="text" id="id_question{{ question.id }}" name="question" />
+  </p>
+  <p>
+    <label for="answer">Answer :</label>
+    <input type="text" id="id_answer{{ question.id }}" name="answer" />
+  </p>
+  <p>
+    <label for="user"> User : </label>
+    <input type="text" id="id_user" name="user" value="{{ logged_user }}" /><!-- <select name="{{ logged_user }}" size="1">
+      <option id="{{ logged_user.id }}">{{ logged_user }}</option>
+    </select> -->
+  <!-- </p>
+  <p>
+    <label for="creationDate">CreationDate :</label>
+    <input type="text" id="id_creationDate" name="creationDate" value="{{ datetime.datetime.now }}" />
+  </p>
+    <input type="submit" value="Submit" />
+</form></center> --> 
+
+
+<center>
+  <form method="POST" action="/get_reply/">
+    {{ formset.management_form }} {% csrf_token %}
+    <table>
+      {{ formset }}
+    </table>
+    
+    <input type="submit" value="Submit" />
+  </form>
+</center>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+
+{% extends "polls/base.html" %}
+{% block title %}Création d'un profil{% endblock %}
+{% block bodyId %}userProfilePage{% endblock %}
+
+
+{% block content %}
+<script type="text/javascript" src="../static/js/jquery-1.12.0.min.js"></script>
+<script type="text/javascript" src="../static/js/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("input#id_st-courriel").focusout(checkEmailField);
+    });
+
+    function checkEmailField() {    
+        $fieldValue = $("input#id_st-courriel").val();
+        $.ajax({
+            url: '/ajax/checkEmailField',
+            data: ({
+                value: $fieldValue
+            }),
+            type: 'GET',
+            success: function($data, $textStatus, $XMLHttpRequest) {
+                if ($data != '') {
+                    $("input#id_st-courriel").parent().prev('errorlist').remove();
+                    $("input#id_st-courriel").parent().before($data);
+                }
+            }
+        })
+    }
+</script>
+
+<h1>Création d'un compte</h1>
+
+ <div id="Global">
+ 	<div id="gauche">
+		<section id="studentList">
+		<fieldset>
+		<p class="title">Vous êtes un(e) étudiant(e) :</p>
+			
+			<form action="register" method="GET" id="studentForm">
+				{{ studentForm.as_p }}
+				{% csrf_token %}
+				<p>
+					<input type="hidden" name="profileType" value="student" />
+					<input type="submit" value="Créer un compte" />
+				</p>
+			</form>
+		</fieldset>
+		</section>
+	</div>
+	<div id="droite">
+		<section id="employeeList">
+		<fieldset>
+		<p class="title">Vous êtes un(e) employé(e) :</p>
+			
+			<form action="register" method="GET" id="employeeForm">
+				{{ employeeForm.as_p }}
+				{% csrf_token %}
+				<p>
+					<input type="hidden" name="profileType" value="employee" />
+					<input type="submit" value="Créer un compte" />		
+				</p>
+			</form>
+			</fieldset>
+		</section>
+	</div>
+
+<br>
+<br>
+<br>
+
+<center>
+<a href="/login" class="buttonLink">Retour à la page d'authentification</a>
+</center>
+</div>
+<link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
+
+{% endblock %}
+
+<!-- <script type="text/javascript" src="/static/js/jquery-1.12.0.min.js"></script>
+
+<script type="text/javascript">
+    function displayRightForm() {
+    if ($('#profileType').val() == 'employee') {
+        $('#employeeForm').hide();
+        $('#studentForm').show();
+    }
+    else {
+        $('#studentForm').hide();
+        $('#employeeForm').show();
+    }
+}
+$(document).ready(displayRightForm);
+$('#profileType').change(displayRightForm);
+</script>
+
+
+<h1>Création d'un compte</h1>
+<form>
+	<p>
+		<label>Vous êtes :</label>
+		<select id="employeeForm">
+			<option id="student" value="student" {% if studentForm.is_bound %} selected="selected" {% endif %}>Étudiant</option>
+			<option id="employee" value="employee" {% if employeeForm.is_bound %} selected="selected" {% endif %}>Employé</option>
+		</select>
+	</p>
+</form>
+<div id="studentForm">
+<form action="register" method="GET" id="studentForm">
+	{{ studentForm.as_p }}
+	{% csrf_token %}
+	<p>
+		<input type="hidden" name="profileType" value="student" />
+		<input type="submit" value="Créer un compte" />
+	</p>
+</form>
+</div>
+
+<div id="employeeForm">
+<form action="register" method="GET" id="employeeForm">
+	{{ employeeForm.as_p }}
+	{% csrf_token %}
+	<p>
+		<input type="hidden" name="profileType" value="employee" />
+		<input type="submit" value="Créer un compte" />		
+	</p>
+</form>
+</div>
+<link rel="stylesheet" type="text/css" href="/static/css/style.css"/> -->
+
+
+

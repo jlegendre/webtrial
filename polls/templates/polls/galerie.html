@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+{% csrf_token %}
+
+{% extends "polls/base.html" %}
+{% block title %}La galerie{%endblock %}
+{% block bodyId %}galeriePage{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+
+
+<!-- List of uploaded documents -->
+<h1><center>Galerie des images enregistrées</center></h1>
+	<section class="main">
+		<div class="portfolio"><center>
+			{% if documents %}
+			<ul>
+				{% for document in documents %}
+				<img src="{{ document.docfile.url }}" class="images_petit" alt="" width='300' height='200'>
+				{% endfor %}
+			</center></ul>
+			{% else %}
+				<p>No documents.</p>
+			{% endif %}
+		</div>    
+    </section>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qeMuiozaOs8" frameborder="0" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/IyTv_SR2uUo" frameborder="0" allowfullscreen></iframe>
+
+https://www.youtube.com/watch?v=qeMuiozaOs8
+
+{% endblock %}
+
+{% block headerContent %}
+<br>
+<br>
+
+<p id="profileLinks">
+	<a href="../showProfile?userToShow={{ logged_user.id }}" class="buttonLink">Voir mon profil</a>
+	<a href="../modifyProfile" class="buttonLink">Modifier mon profil</a>
+	<a href="/upload" class="buttonLink">Retour sur l'upload</a>
+</p>
+
+{% endblock %}
+
+{% block bodyContent %}
+
+{% endblock %}

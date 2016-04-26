@@ -1,0 +1,32 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+
+<html>
+{% csrf_token %}
+
+	<head>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+		
+		
+		<title>Webtrial - {% block title %}Bienvenue !{%endblock %}</title>
+	</head>
+
+	<body id="{% block bodyId %}genericPage{% endblock %}">
+		<header>
+		{% block headerContent %}{% endblock %}
+		</header>
+		<section id="content">
+			{% block content %}
+			<head>
+				<link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
+				<!-- //LIEN DU JAVASCRIPT ICI  -->
+			 <script type="text/javascript" src="../static/js/jquery-1.12.0.min.js"></script>
+
+			</head>
+			{% endblock %}	
+		</section>
+	</body>
+</html>
+

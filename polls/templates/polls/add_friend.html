@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+
+
+{% extends "polls/base.html" %}
+{% block title %}Ajout d'un ami{%endblock %}
+{% block bodyId %}addUserPage{% endblock %}
+
+{% block content %}
+<h1>Ajout d'un ami</h1>
+<form action="addFriend" method="get">
+	{{ form.as_p }}
+	<p>
+		<input type="submit" value="Ajouter" id="showProfileNavigationButtons"/>
+		<a href="../" class="buttonLink">Retour</a>
+</p>
+</form>
+<link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
+{% endblock %}

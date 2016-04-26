@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+
+
+{% extends "polls/base.html" %}
+{% block title %}Connexion{%endblock %}
+{% block bodyId %}loginPage{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="/static/css/connexion.css">
+{% load staticfiles %}
+    <link rel="icon" href="../static/img/logoaaa.png">
+
+<body>
+    <div class="wrapper">
+<br><i><h1>Quanticsoft</h1></i>
+<form action ="login" method ="POST">
+{{ form.as_p }}
+{% csrf_token %}
+
+<p>
+    <input type="submit" value="Se connecter" />
+    <a href="{% url 'polls.views.register' %}"><strong>Créer un compte</strong></a>
+
+</p>
+</form>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+        <div class="container">
+            <h1>Bienvenue <i class="fa fa-key"></i></h1>
+            
+        </div>
+        
+        <ul class="bg-bubbles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+
+</body>
+
+
+{% endblock %}
+

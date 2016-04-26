@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+
+
+{% extends "polls/base.html" %}
+{% block title %}Upload d'un fichier/image{%endblock %}
+{% block bodyId %}uploadPage{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Django File Upload </title>   
+    </head>
+    <body>
+<h1><center>Upload d'une image</center></h1>
+        <!-- Upload form. Note enctype attribute! -->
+        <form action="{% url 'polls.views.upload' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>{{ form.non_field_errors }}</p>
+            <p{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+            <p>
+                {{ form.docfile.errors }}
+                {{ form.docfile }}
+            </p>
+            <p><input type="submit" value="Upload" /></p>
+        </form>
+
+
+<!-- List of uploaded documents -->
+    {% if documents %}
+        <ul>
+        {% for document in documents %}
+            <li><a href="{{ document.docfile.url }}">{{ document.docfile.name }}</a></li>
+            <img src="{{ document.docfile.url }}" class="img-responsive" alt="">
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No documents.</p>
+    {% endif %}
+
+
+    </body>
+<a href="../" class="buttonLink">Retour</a>
+</html> 
+{% endblock %}
+
+{% block headerContent %}
+<br>
+<br>
+<p id="profileLinks">
+    <a href="../showProfile?userToShow={{ logged_user.id }}/" class="buttonLink">Voir mon profil</a>
+    <a href="../modifyProfile/" class="buttonLink">Modifier mon profil</a>
+    <a href="/galerie/" class="buttonLink">Voir la gallerie</a>
+</p>
+
+{% endblock %}
